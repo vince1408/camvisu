@@ -1,0 +1,35 @@
+<?php
+
+// echo date('d/m/y H:i:s');
+// echo phpinfo();
+echo "<h2> Plus vieux de 1 semaine </h2>";
+$i=0;
+chdir('snap');
+if ($handle = opendir('.')) {
+	// Parcours du dossier
+    while (false !== ($entry = readdir($handle))) {
+			// Si correspond a un fichier de la cam et plus vieux que x sec, alors traitement
+			// Exemple : 00_1B_19_19_42_08_BSIP-001514-KYCJV_0_20140513162623_1.jpg 
+			$info = new SplFileInfo($entry);
+			if (time() - $info->getMTime() > 604800 ){
+				$result = time() - $info->getMTime();
+				echo $debug = $debug . $entry." Modifié le ".date("d/m/y H:i:s", $info->getMTime())." et ".$result." .. Suppression<br/>";
+				// unlink($entry);
+				$i++;
+			}
+    }
+    closedir($handle);
+}
+
+//echo $debug;
+//Envoi rapport
+if ($i > 0){
+$headers  = 'MIME-Version: 1.0' . "\r\n";
+$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+mail('vins38@gmail.com', 'Purge FTP','OK, '.$i.' fichiers supprimés.',$headers);
+echo "OK Rapport $i fichiers. ";
+}else{
+echo "Pas de rapport";
+}
+
+?>
