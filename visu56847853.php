@@ -2,10 +2,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-<link rel="stylesheet" href="http://blueimp.github.io/Gallery/css/blueimp-gallery.min.css">
+<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://blueimp.github.io/Gallery/css/blueimp-gallery.min.css">
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css"href="/fancybox/source/jquery.fancybox.css"  media="screen" />
 <link rel="stylesheet" type="text/css" href="fancybox/source/jquery.fancybox.css?v=2.1.5" media="screen" />
 <link rel="stylesheet" type="text/css" href="fancybox/source/helpers/jquery.fancybox-buttons.css?v=1.0.5" />
 <link rel="stylesheet" type="text/css" href="fancybox/source/helpers/jquery.fancybox-thumbs.css?v=1.0.7" />
@@ -48,7 +47,7 @@
         </div>
     </div>
 </div>
-<h2> Last 10 min - <a href="historyip.txt">Histo</a> - <a href="used65656673.php">Used</a> - <a href="?all=y">All</a></h2>
+<h2> Last 10 min - <a href="historyip.txt">Histo</a> - <a href="used65656673.php">Used</a> - <a href="?all=y">All</a> - <a href="/caamrecord">Vids</a></h2>
 <form action="" method="GET">
 <div class="input-append"><span style="color: white;">Il y a</span>
  <select name="s" class="input-small">
