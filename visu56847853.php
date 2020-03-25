@@ -138,7 +138,7 @@ if ($handle = opendir('.')) {
 // if ($i > 0){
 // $headers  = 'MIME-Version: 1.0' . "\r\n";
 // $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
-// mail('vins38@gmail.com', 'Purge FTP','OK, '.$i.' fichiers supprimés.',$headers);
+// mail('toto@gmail.com', 'Purge FTP','OK, '.$i.' fichiers supprimés.',$headers);
 // echo "OK Rapport";
 // }else{	
 // echo "Pas de rapport";
