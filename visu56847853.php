@@ -47,7 +47,7 @@
         </div>
     </div>
 </div>
-<h2> Last 10 min - <a href="historyip.txt">Histo</a> - <a href="used65656673.php">Used</a> - <a href="?all=y">All</a> - <a href="/caamrecord">Vids</a></h2>
+<h2> Last 10 min - <a href="historyip.txt">Histo</a> - <a href="used65656673.php">Used</a> - <a href="?all=y">All</a> - <a href="/caamrecord">Vids</a></h2> 
 <form action="" method="GET">
 <div class="input-append"><span style="color: white;">Il y a</span>
  <select name="s" class="input-small">
@@ -61,14 +61,13 @@ error_reporting(E_ERROR);
 	}
 ?>
  </select>
- <input type="submit" value="OK">
+ <input class="btn-success" type="submit" value="OK" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="label label-info"><?php echo date('d-m-Y');?></span><span class="label label-primary"><?php echo date('H:i:s');?></span>
  </div>
 </form>
 <br/>
 <div id="links">
 <?php
 
-// echo date('d/m/y H:i:s');
 // echo phpinfo();
 
 $i=1;
@@ -89,7 +88,7 @@ if ($handle = opendir('.')) {
     foreach($files as $entry) {
         //if (preg_match("/SDAlarm_/", $entry)){
 			// Si correspond a un fichier de la cam et plus vieux que x sec, alors traitement
-			// Exemple : SDAlarm_-001514-KYCJV_0_20140513162623_1.jpg 
+			// Exemple : Schedule_20171217-172420.jpg 
 			$info = new SplFileInfo($entry);
 			// Pour afficher la date et l'heure en guise de titre (à ma guise lol)
 			$tyear = substr($entry, -19, 4);
@@ -98,9 +97,9 @@ if ($handle = opendir('.')) {
 			$thour = substr($entry, -10, 2);
 			$tmin = substr($entry, -8, 2);
 			$ts = substr($entry, -6, 2);
-			$mytitle = $tday."/".$tmonth."/".$tyear." - ".$thour.":".$tmin.":".$ts;
+			$mytitle = $tday."-".$tmonth."-".$tyear." - ".$thour.":".$tmin.":".$ts;
 			if (isset($_GET['s'])) {
-					$start=intval($_GET['s']);
+				$start=intval($_GET['s']);
 				if((time()-$info->getMTime()<$start)&&(time()-$info->getMTime()>($start-600))){
 				?>
 				<a class="fancybox-vince" href="snap/<?php echo $entry; ?>" rel="group1" title="<?php echo $mytitle; ?>" data-fancybox-group="button">
@@ -109,8 +108,8 @@ if ($handle = opendir('.')) {
 				<?php
 				$i++;
 				}
-			}elseif (empty($_GET['all'])){  // si pas de début et fin on fait les 5 dernières minutes
-				if (time() - $info->getMTime() < 300 ){
+			}elseif (empty($_GET['all'])){  // si pas de début et fin on fait les 10 dernières minutes
+				if (time() - $info->getMTime() < 600 ){
 				?>
 				<a class="fancybox-vince" href="snap/<?php echo $entry; ?>" rel="group1" title="<?php echo $mytitle; ?>" data-fancybox-group="button">
 					<img src="snap/<?php echo $entry; ?>" alt="<?php echo $i; ?>" width="75">
@@ -118,7 +117,7 @@ if ($handle = opendir('.')) {
 				<?php
 				$i++;
 				}
-			}elseif ($_GET['all']="y"){ // on affiche la derniere heure au calme)
+			}elseif ($_GET['all']="y"){ // on affiche la derniere heure au calme
 				if (time() - $info->getMTime() < 3600 ){
 				?>
 				<a class="fancybox-vince" href="snap/<?php echo $entry; ?>" rel="group1" title="<?php echo $mytitle; ?>" data-fancybox-group="button">
